@@ -1,7 +1,7 @@
 package com.thaddev.noanvillimits.mixin;
 
-import net.minecraft.SharedConstants;
 import net.minecraft.screen.AnvilScreenHandler;
+import net.minecraft.util.StringHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -14,7 +14,7 @@ public abstract class AnvilScreenHandlerMixin {
         //replace all instances of "\n" with the line feed character
         text = text.replace("\\n", "\n");
 
-        String string = SharedConstants.stripInvalidChars(text, true);
+        String string = StringHelper.stripInvalidChars(text, true);
         if (string.length() <= 32767) {
             cir.setReturnValue(string);
             return;
